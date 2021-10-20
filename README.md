@@ -1,4 +1,4 @@
-# qb-ammuntionrobbery
+# qb-ammunationrobbery
 Enables the Little Seoul Ammunation to be robbed for Rifle/Smg Ammo and Armor
 
 all lootables are configuable in the Config
