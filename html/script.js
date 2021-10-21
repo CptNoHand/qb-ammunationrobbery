@@ -196,18 +196,18 @@ Thermite.Open = function(data) {
 }
 
 Thermite.Failed = function() {
-    if (active) $.post("https://qb-ifruitstore/thermitefailed");
+    if (active) $.post("https://qb-ammunationrobbery/thermitefailed");
     active = false;
     Thermite.Close();
 }
 
 Thermite.Success = function() {
-    if (active) $.post("https://qb-ifruitstore/thermitesuccess");
+    if (active) $.post("https://qb-ammunationrobbery/thermitesuccess");
     active = false;
     Thermite.Close();
 }
 
 Thermite.Close = function() {
     $('.thermite-container').css("display", "none");
-    $.post('https://qb-ifruitstore/closethermite');
+    $.post('https://qb-ammunationrobbery/closethermite');
 }
