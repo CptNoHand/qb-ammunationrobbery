@@ -1,5 +1,5 @@
 local isLoggedIn = false
-local CurrentCops = 0
+local CurrentCops = -2
 local copsCalled = false
 
 Citizen.CreateThread(function()
@@ -29,7 +29,6 @@ Citizen.CreateThread(function()
                         if not requiredItemsShowed then
                             requiredItems = {
                                 [1] = {name = QBCore.Shared.Items["thermite"]["name"], image = QBCore.Shared.Items["thermite"]["image"]},
-                                [2] = {name = QBCore.Shared.Items["aluminumoxide"]["name"], image = QBCore.Shared.Items["aluminumoxide"]["image"]},
                             }
                             requiredItemsShowed = true
                             TriggerEvent('inventory:client:requiredItems', requiredItems, true)
@@ -40,7 +39,6 @@ Citizen.CreateThread(function()
                 if requiredItemsShowed then
                     requiredItems = {
                         [1] = {name = QBCore.Shared.Items["thermite"]["name"], image = QBCore.Shared.Items["thermite"]["image"]},
-                        [2] = {name = QBCore.Shared.Items["aluminumoxide"]["name"], image = QBCore.Shared.Items["aluminumoxide"]["image"]},
                     }
                     requiredItemsShowed = false
                     TriggerEvent('inventory:client:requiredItems', requiredItems, false)
@@ -65,9 +63,7 @@ Citizen.CreateThread(function()
                     if dist < 0.6 then
                         if not requiredItemsShowed2 then
                             requiredItems = {
-                                [1] = {name = QBCore.Shared.Items["screwdriverset"]["name"], image = QBCore.Shared.Items["screwdriverset"]["image"]},
-                                [2] = {name = QBCore.Shared.Items["drill"]["name"], image = QBCore.Shared.Items["drill"]["image"]},
-                                [3] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
+                                [1] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
                             }
                             requiredItemsShowed2 = true
                             TriggerEvent('inventory:client:requiredItems', requiredItems, true)
@@ -96,9 +92,7 @@ Citizen.CreateThread(function()
                     else
                         if requiredItemsShowed2 then
                             requiredItems = {
-                                [1] = {name = QBCore.Shared.Items["screwdriverset"]["name"], image = QBCore.Shared.Items["screwdriverset"]["image"]},
-                                [2] = {name = QBCore.Shared.Items["drill"]["name"], image = QBCore.Shared.Items["drill"]["image"]},
-                                [3] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
+                                [1] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
                             }
                             requiredItemsShowed2 = false
                             TriggerEvent('inventory:client:requiredItems', requiredItems, false)
@@ -110,9 +104,7 @@ Citizen.CreateThread(function()
             if not inRange then
                 if requiredItemsShowed2 then
                     requiredItems = {
-                        [1] = {name = QBCore.Shared.Items["screwdriverset"]["name"], image = QBCore.Shared.Items["screwdriverset"]["image"]},
-                        [2] = {name = QBCore.Shared.Items["drill"]["name"], image = QBCore.Shared.Items["drill"]["image"]},
-                        [3] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
+                        [1] = {name = QBCore.Shared.Items["advancedlockpick"]["name"], image = QBCore.Shared.Items["advancedlockpick"]["image"]},
                     }
                     requiredItemsShowed2 = false
                     TriggerEvent('inventory:client:requiredItems', requiredItems, false)
@@ -233,7 +225,6 @@ AddEventHandler('thermite:UseThermite', function()
             if requiredItemsShowed then
                 requiredItems = {
                     [1] = {name = QBCore.Shared.Items["thermite"]["name"], image = QBCore.Shared.Items["thermite"]["image"]},
-                    [2] = {name = QBCore.Shared.Items["aluminumoxide"]["name"], image = QBCore.Shared.Items["aluminumoxide"]["image"]},
                 }
                 requiredItemsShowed = false
                 TriggerEvent('inventory:client:requiredItems', requiredItems, false)
@@ -330,7 +321,7 @@ RegisterNUICallback('thermitesuccess', function()
     TriggerServerEvent('qb-ammunationrobbery:server:PoliceAlertMessage3')
     TriggerServerEvent("QBCore:Server:RemoveItem", "thermite", 1)
     local pos = GetEntityCoords(PlayerPedId())
-    if #(pos - vector3(Config.Locations["thermite"].x, Config.Locations["thermite"].y,Config.Locations["thermite"].z)) < 1.0 then
+    if #(pos - vector3(Config.Locations["thermite"].x, Config.Locations["thermite"].y,Config.Locations["thermite"].z)) < 1.5 then
         TriggerServerEvent("qb-ammunationrobbery:server:SetThermiteStatus", "isDone", true)
         TriggerServerEvent("qb-ammunationrobbery:server:SetThermiteStatus", "isBusy", false)
     end
